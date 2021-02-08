@@ -1,5 +1,5 @@
 //Create variables here
-dog, happyDog, database, foodS, foodStock
+var dog, happyDog, database, foodS, foodStock
 
 function preload()
 {
@@ -16,14 +16,14 @@ function setup() {
   dog.scale=0.2;
 
   database=firebase.database();
-  foodStock=database.ref('Food')
+  var foodStock=database.ref('Food')
   foodStock.on("value",readStock)
   
 }
 
 
 function draw() {  
-  backGround("green")
+  background("green");
   if(keyWentUp(UP_ARROW)){
     writeStock(foodS);
     dog.addImage(dog1Image);
@@ -45,7 +45,7 @@ function writeStock(x){
   }else{
     x=x-1;
   }
-  dtabase.ref('/').update({
+  database.ref('/').update({
     Food:x
   })
 }
